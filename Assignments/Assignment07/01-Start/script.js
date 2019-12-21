@@ -10,31 +10,7 @@
 // the event handler is removed (so that you can’t inflate or deflate the explosion).
 // Hint: keeping track of the size in percentage might be easier.
 // Hint: Make sure you quote the emoji characters. They are strings, after all.
-
-let balloon = document.getElementById("balloon");
-let currentSize = 100;
-
-const grow = event => {
-  if (event.key == "ArrowUp") {
-    event.preventDefault();
-    currentSize *= 1.1;
-    balloon.style.fontSize = currentSize + "%";
-  } else if (event.key == "ArrowDown") {
-    event.preventDefault();
-    if (currentSize <= 50) {
-      return;
-    }
-    currentSize *= 0.9;
-    balloon.style.fontSize = currentSize + "%";
-  }
-  if (currentSize >= 500) {
-    event.preventDefault();
-    balloon.textContent = "💥";
-    window.removeEventListener("keydown", grow);
-  }
-};
-
-window.addEventListener("keydown", grow);
+// Hint: document.getElementById("balloon") will get the balloon element on the page.
 
 // 2. The index.html page has a tabbed layout. Make the default state of the layout show
 // the first tab, and make it so that when you click the links at the top the correct
@@ -43,62 +19,3 @@ window.addEventListener("keydown", grow);
 // function as expected. There are many ways to accomplish this task, but you will need
 // to at minimum add listeners to each link and toggle the display of the tab contents.
 // Hint: display: none; hides an element, and display: block; will bring it
-
-let links = [];
-
-links.push(
-  document.getElementById("tab1Link"),
-  document.getElementById("tab2Link"),
-  document.getElementById("tab3Link")
-);
-
-let tabs = [];
-
-tabs.push(
-  document.getElementById("tab1"),
-  document.getElementById("tab2"),
-  document.getElementById("tab3")
-);
-
-const showTab1 = event => {
-  event.preventDefault();
-  if (event.button == 0) {
-    tabs[0].style.display = "block";
-    tabs[1].style.display = "none";
-    tabs[2].style.display = "none";
-  }
-};
-
-const showTab2 = event => {
-  event.preventDefault();
-  if (event.button == 0) {
-    tabs[0].style.display = "none";
-    tabs[1].style.display = "block";
-    tabs[2].style.display = "none";
-  }
-};
-
-const showTab3 = event => {
-  event.preventDefault();
-  if (event.button == 0) {
-    tabs[0].style.display = "none";
-    tabs[1].style.display = "none";
-    tabs[2].style.display = "block";
-  }
-};
-
-const defaultTabState = () => {
-  tabs[0].style.display = "block";
-  tabs[1].style.display = "none";
-  tabs[2].style.display = "none";
-};
-
-defaultTabState();
-
-links[0].addEventListener("mousedown", showTab1);
-links[1].addEventListener("mousedown", showTab2);
-links[2].addEventListener("mousedown", showTab3);
-
-links.forEach(element =>
-  element.addEventListener("click", event => event.preventDefault())
-);
