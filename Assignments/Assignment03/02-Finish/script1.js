@@ -20,6 +20,7 @@ for (let i = minSize; i <= maxSize; i++) {
 
   console.log(line);
 }
+
 for (let i = maxSize - 1; i > 0; i--) {
   let line = "";
 
