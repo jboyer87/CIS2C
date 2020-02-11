@@ -8,7 +8,13 @@ const outputFriends = arrayOfFriends => {
   let suffix = ".";
 
   for (let i = 0; i <= arrayOfFriends.length - 1; i++) {
-    middle += arrayOfFriends[i] + " ";
+    middle += arrayOfFriends[i];
+    if (i != arrayOfFriends.length - 1) {
+      middle += ", ";
+      if (i == arrayOfFriends.length - 2) {
+        middle += "and ";
+      }
+    }
   }
 
   let wholeSentence = prefix + middle + suffix;
@@ -22,6 +28,6 @@ myFriends.push("Brandon");
 
 console.log(outputFriends(myFriends));
 
-myFriends.pop(); // RETURN "Brandon"
+console.log(myFriends.pop() + " has been removed!"); // myFriends.pop() returns "Brandon"
 
 console.log(outputFriends(myFriends));
