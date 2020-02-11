@@ -85,4 +85,17 @@ const egg = () => {
   return chicken();
 };
 
-console.log(chicken()); // ut oh... This is going to overflow!
+// console.log(chicken()); // ut oh... This is going to overflow!
+
+// BAD Recursive function
+// This calculates numbers over and over again that it has already calculated. This
+// Will run for a very long time and is not very efficient.
+const fibNumber = n => {
+  if (n == 1 || n == 2) {
+    return 1;
+  }
+
+  return fibNumber(n - 1) + fibNumber(n - 2);
+};
+
+console.log(fibNumber(200)); // 1, 1, 2, 3, 5
