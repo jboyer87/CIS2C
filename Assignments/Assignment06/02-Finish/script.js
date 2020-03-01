@@ -20,12 +20,12 @@ function reliableMultiply(a, b) {
   while (true) {
     try {
       return primitiveMultiply(a, b);
-    } catch (exception) {
-      if (!(exception instanceof MultiplicatorUnitFailure)) {
-        throw exception;
+    } catch (error) {
+      if (error instanceof MultiplicatorUnitFailure) {
+        return reliableMultiply(a, b);
       }
     }
   }
 }
 
-console.log(reliableMultiply(8, 8));
+console.log(reliableMultiply(8, 8)); // outputs 64
