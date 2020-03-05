@@ -28,8 +28,8 @@ const grow = event => {
     currentSize *= 0.9;
     balloon.style.fontSize = currentSize + "%";
   }
+
   if (currentSize >= 500) {
-    event.preventDefault();
     balloon.textContent = "💥";
     window.removeEventListener("keydown", grow);
   }
@@ -45,55 +45,48 @@ window.addEventListener("keydown", grow);
 // to at minimum add listeners to each link and toggle the display of the tab contents.
 // Hint: display: none; hides an element, and display: block; will bring it
 
-let links = [];
+let tab1 = document.getElementById("tab1");
+let tab2 = document.getElementById("tab2");
+let tab3 = document.getElementById("tab3");
 
-links.push(
-  document.getElementById("tab1Link"),
-  document.getElementById("tab2Link"),
-  document.getElementById("tab3Link")
-);
+let tab1Link = document.getElementById("tab1Link");
+let tab2Link = document.getElementById("tab2Link");
+let tab3Link = document.getElementById("tab3Link");
 
-let tabs = [];
+// const setDefaultState = () => {
 
-tabs.push(
-  document.getElementById("tab1"),
-  document.getElementById("tab2"),
-  document.getElementById("tab3")
-);
+// };
 
-const showTab1 = event => {
+function setDefaultState() {
+  tab2.style.display = "none";
+  tab3.style.display = "none";
+}
+
+setDefaultState();
+
+function displayTab1(event) {
   event.preventDefault();
-  tabs[0].style.display = "block";
-  tabs[1].style.display = "none";
-  tabs[2].style.display = "none";
-};
+  tab1.style.display = "block";
+  tab2.style.display = "none";
+  tab3.style.display = "none";
+}
 
-const showTab2 = event => {
+tab1Link.addEventListener("click", displayTab1);
+
+function displayTab2(event) {
   event.preventDefault();
-  tabs[0].style.display = "none";
-  tabs[1].style.display = "block";
-  tabs[2].style.display = "none";
-};
+  tab2.style.display = "block";
+  tab1.style.display = "none";
+  tab3.style.display = "none";
+}
 
-const showTab3 = event => {
+tab2Link.addEventListener("click", displayTab2);
+
+function displayTab3(event) {
   event.preventDefault();
-  tabs[0].style.display = "none";
-  tabs[1].style.display = "none";
-  tabs[2].style.display = "block";
-};
+  tab3.style.display = "block";
+  tab1.style.display = "none";
+  tab2.style.display = "none";
+}
 
-const defaultTabState = () => {
-  tabs[0].style.display = "block";
-  tabs[1].style.display = "none";
-  tabs[2].style.display = "none";
-};
-
-defaultTabState();
-
-links[0].addEventListener("click", showTab1);
-links[1].addEventListener("click", showTab2);
-links[2].addEventListener("click", showTab3);
-
-links.forEach(element =>
-  element.addEventListener("click", event => event.preventDefault())
-);
+tab3Link.addEventListener("click", displayTab3);
