@@ -54,6 +54,7 @@ const sayHello = () => {
   // Store it in the local storage
   // "myName" is the key and textFieldContents is the value
   localStorage.setItem("myName", textFieldContents);
+
   // We could store it in session storage too:
   // sessionStorage.setItem("myName", textFieldContents);
 
